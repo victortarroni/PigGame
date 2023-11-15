@@ -1,6 +1,6 @@
 'use strict';
 
-// selecting element
+//#region selecting element
 const playerOEl = document.querySelector('.player--0');
 const player1El = document.querySelector('.player--1');
 const score0El = document.querySelector('#score--0');
@@ -11,8 +11,9 @@ const diceEl = document.querySelector('.dice');
 const btnNew = document.querySelector('.btn--new');
 const btnRoll = document.querySelector('.btn--roll');
 const btnHold = document.querySelector('.btn--hold');
+//#endregion
 
-// starting conditions
+//#region starting conditions
 let scores, currentScore, activePlayer, playing;
 // we assigned them outside the finction so they can be accessible outside the function.
 
@@ -45,8 +46,9 @@ const switchPlayer = function (){
     playerOEl.classList.toggle('player--active');
     player1El.classList.toggle('player--active');
 }
+//#endregion
 
-// Rolling dice functionality
+//#region Rolling dice functionality
 
 btnRoll.addEventListener('click', function (){
   if(playing){
@@ -96,3 +98,4 @@ btnHold.addEventListener('click', function(){
 
 btnNew.addEventListener('click', init)
 
+//#endregion
