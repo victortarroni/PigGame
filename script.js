@@ -6,7 +6,7 @@ const player1El = document.querySelector('.player--1');
 const score0El = document.querySelector('#score--0');
 const score1El = document.getElementById('score--1');
 const current0El = document.getElementById('current--0');
-const current1El = document.getElementById('current--1')
+const current1El = document.getElementById('current--1');
 const diceEl = document.querySelector('.dice');
 const btnNew = document.querySelector('.btn--new');
 const btnRoll = document.querySelector('.btn--roll');
@@ -18,7 +18,7 @@ let scores, currentScore, activePlayer, playing;
 // we assigned them outside the finction so they can be accessible outside the function.
 
 
-const init = function (){
+const init = function () {
 
   scores = [0, 0];
   currentScore = 0;
@@ -35,25 +35,24 @@ const init = function (){
   player1El.classList.remove('player--winner');
   playerOEl.classList.add('player--active');
   player1El.classList.remove('player--active');
-}
+};
 init();
 // we call the function here because we want it to be executed right when the file is loaded and when the button new is clicked.
 
-const switchPlayer = function (){
-  document.getElementById(`current--${activePlayer}`).textContent =0;
+const switchPlayer = function () {
+  document.getElementById(`current--${activePlayer}`).textContent = 0;
     currentScore = 0;
-    activePlayer = activePlayer === 0 ? 1:0;
+    activePlayer = activePlayer === 0 ? 1 : 0;
     playerOEl.classList.toggle('player--active');
     player1El.classList.toggle('player--active');
-}
+};
 //#endregion
 
 //#region Rolling dice functionality
 
-btnRoll.addEventListener('click', function (){
-  if(playing){
+btnRoll.addEventListener('click', function () {
+  if (playing) {
 
-  
   // 1. generate a random dice roll
   const dice = Math.trunc(Math.random() * 6) + 1;
 
@@ -67,14 +66,15 @@ btnRoll.addEventListener('click', function (){
     currentScore += dice;
     document.getElementById(`current--${activePlayer}`).textContent = currentScore;
   } else {
-    //switch to next player
+    // Switch to next player
     switchPlayer();
   }
 }
 });
 
-btnHold.addEventListener('click', function(){
- if(playing){
+
+btnHold.addEventListener('click', function () {
+ if (playing) {
 
  
   // 1. Add current score to active score
@@ -84,7 +84,7 @@ btnHold.addEventListener('click', function(){
 
   
 
-  if(scores[activePlayer] >= 20){
+  if(scores[activePlayer] >= 100){
     playing = false;
     diceEl.classList.add('hidden');
     document.querySelector(`.player--${activePlayer}`).classList.add('player--winner');
@@ -94,8 +94,8 @@ btnHold.addEventListener('click', function(){
     switchPlayer();
   }
 }
-})
+});
 
-btnNew.addEventListener('click', init)
+btnNew.addEventListener('click', init);
 
 //#endregion
